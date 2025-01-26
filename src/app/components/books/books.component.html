@@ -1,11 +1,14 @@
+<app-book [book]="newBook" (saveEmitter)="saveBook()"></app-book>
 <div class="container">
   <h3>Livros Cadastrados</h3>
   <table class="table">
     <thead>
-      <th scope="col">#</th>
-      <th scope="col">Titulo</th>
-      <th scope="col">autor</th>
-      <th scope="col">Preço</th>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Preço</th>
+      </tr>
     </thead>
     <tbody>
       <tr *ngFor="let book of books">

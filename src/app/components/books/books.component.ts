@@ -9,6 +9,7 @@ import { Book } from '../../Book';
   styleUrl: './books.component.css',
 })
 export class BooksComponent {
+  newBook: Book = {} as Book;
   books: Book[] = [
     {
       id: 1,
@@ -29,4 +30,10 @@ export class BooksComponent {
       price: 503.0,
     },
   ];
+
+  saveBook() {
+    this.newBook.id = this.books.length + 1;
+    this.books.push(this.newBook);
+    this.newBook = {} as Book; //zera a variavel
+  }
 }
