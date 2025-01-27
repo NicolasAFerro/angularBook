@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Book } from '../../Book';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-books',
@@ -9,7 +10,9 @@ import { Book } from '../../Book';
   styleUrl: './books.component.css',
 })
 export class BooksComponent {
-  newBook: Book = {} as Book;
+  book: Book = {} as Book;
+  isUpdate: boolean = false;
+  idCount: number = 5;
   books: Book[] = [
     {
       id: 1,
@@ -32,8 +35,24 @@ export class BooksComponent {
   ];
 
   saveBook() {
-    this.newBook.id = this.books.length + 1;
-    this.books.push(this.newBook);
-    this.newBook = {} as Book; //zera a variavel
+    if (!this.isUpdate) {
+      this.book.id = this.idCount;
+      this.idCount++;
+      this.books.push(this.book);
+    }
+    this.book = {} as Book; //zera a variavel
+    this.isUpdate = false;
+  }
+
+  //Aqui só passa pelo filtro se for diferente
+  //o objeto b é diferente de removeBook? True, passa no filtro;
+  //caso contrario, bloqueia
+  deleteBook(removeBook: Book) {
+    this.books = this.books.filter((b) => b !== removeBook);
+  }
+
+  updateBook(selectedBook: Book) {
+    this.book = selectedBook;
+    this.isUpdate = true;
   }
 }

@@ -1,8 +1,8 @@
 <div class="container">
   <h3>Cadastro</h3>
-  <form action="">
+  <form action="" #formBook="ngForm">
     <div class="row">
-      <label for="title" class="col-form-label">Titulo</label>
+      <label for="title" class="form-label">Titulo</label>
       <div>
         <input
           type="text"
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="row">
-      <label for="autor" class="col-form-label">Autor</label>
+      <label for="autor" class="form-label">Autor</label>
       <div>
         <input
           type="text"
@@ -29,7 +29,7 @@
     </div>
 
     <div class="row">
-      <label for="price" class="col-form-label">Preço</label>
+      <label for="price" class="form-label">Preço</label>
       <div>
         <input
           type="text"
@@ -43,7 +43,13 @@
     </div>
     <div class="row">
       <div>
-        <button class="btn btn-primary mt-3" (click)="save()">Salvar</button>
+        <button
+          class="btn btn-primary mt-3"
+          (click)="save()"
+          [disabled]="formBook.invalid"
+        >
+          Salvar
+        </button>
       </div>
     </div>
   </form>
